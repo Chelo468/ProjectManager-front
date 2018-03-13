@@ -1,0 +1,21 @@
+<div>
+	Proyectos
+</div>
+<div *ngIf="proyectos.length > 0">
+<ul>
+	<li *ngFor="let proyecto of proyectos">
+		<div class="btn-group" role="group" aria-label="Basic example">
+		  <button type="button" class="btn btn-secondary">Editar</button>
+		  <button type="button" class="btn btn-secondary">Detalle</button>
+		</div>
+	</li>
+</ul>
+</div>
+<div *ngIf="proyectos.length == 0">
+	No tiene proyectos asignados ni creados...
+</div>
+<div>
+	<button class="btn btn-success" (click)="crearProyecto()">Crear Proyecto</button>
+</div>
+
+<router-outlet></router-outlet>
