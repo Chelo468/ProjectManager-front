@@ -4,12 +4,13 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
 import { ProyectoService } from '../services/proyecto.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
 
 	selector: 'proyecto',
 	templateUrl: './proyecto.component.html',
-	providers: [ProyectoService]
+	providers: [ProyectoService,AuthService]
 
 	})
 
@@ -20,7 +21,8 @@ export class ProyectoComponent{
 	constructor(
 		private _route:ActivatedRoute,
 		private _router:Router,
-		private _proyectoService:ProyectoService
+		private _proyectoService:ProyectoService,
+		private _authService:AuthService
 		){
 		this.proyectos = [];
 		//this.usuario = new Usuario("","","","","","","","");
@@ -34,15 +36,19 @@ export class ProyectoComponent{
 	}
 
 	buscarProyectosPorIdUser(idUser){
+			
 			return this._proyectoService.getByIdUser(idUser).subscribe(
 				result => {
-					console.log(result);
 					this.proyectos = result;
+					//console.log(this.proyectos);
+
+					if(this.proyectos.Error)
+						this.proyectos = [];
 					//this.usuario = JSON.parse(result);
 					},
 				error => {
-					//var errorMessage = <any>error;
-					//console.log(errorMessage);
+					var errorMessage = <any>error;
+					console.log(errorMessage);
 				}
 			);
 	}

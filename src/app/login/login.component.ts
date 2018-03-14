@@ -5,12 +5,13 @@ import { Router, ActivatedRoute, Params} from '@angular/router';
 
 //Importo el servicio de usuario
 import { UsuarioService } from '../services/usuario.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
 
 	selector: 'login',
 	templateUrl: './login.component.html',
-	providers: [UsuarioService]
+	providers: [UsuarioService, AuthService]
 
 	})
 
@@ -24,7 +25,8 @@ export class LoginComponent{
 	constructor(
 		private _route:ActivatedRoute,
 		private _router:Router,
-		private _usuarioService:UsuarioService
+		private _usuarioService:UsuarioService,
+		private _authService:AuthService
 		){}
 
 	ngOnInit(){
@@ -55,6 +57,7 @@ export class LoginComponent{
 		{
 			if(this.usuario.id_usuario > 0)
 			{
+				this._authService.setToken(this.usuario.tokenSession);
 				this._router.navigate(['/proyecto/' + this.usuario.id_usuario]);
 			}
 			else

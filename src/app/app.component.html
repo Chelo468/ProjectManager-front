@@ -1,2 +1,6 @@
-<navbar></navbar>
+<div *ngIf="_authService.isAuthenticated()">
+	<button class="btn btn-danger" (click)="_authService.cerrarSesion()">Cerrar Sesión</button>
+</div>
+<div class="contanier">
 <router-outlet></router-outlet>
+</div>

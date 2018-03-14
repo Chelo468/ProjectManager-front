@@ -1,3 +1,35 @@
-<form>
-	
+<form novalidate="" (ngSubmit)="crear()" [formGroup]="proyecto">
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">Nombre </label>
+					<input class="form-control col-4" 
+					placeholder="nombre"
+					type="text" formcontrolname="nombre" required maxlength="50" >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">Descripción </label>
+					<input class="form-control col-4" 
+					type="password" formcontrolname="descripcion" placeholder="descripcion" required maxlength="200" >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">URL de Testing </label>
+			<input class="form-control col-4" placeholder="Url Testing" type="text" formcontrolname="urlTesting" maxlength="100" >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">URL de Producción  </label>
+			<input class="form-control col-4" placeholder="Url Produccion" type="password" formcontrolname="urlProduccion" maxlength="100" >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<button type="submit" class="btn btn-outline-primary">Crear</button>
+			<button [routerLink]="['/proyecto/1']" class="btn btn-default">Volver</button>
+		</div>
+	</div>
 </form>

@@ -24,7 +24,8 @@ export class ProyectoService{
 	getByIdUser(idUser){
 		//Ejemplo Spotify
 		//let _headers = new Headers({'authorization': 'Bearer token'});
-		return this._http.get(this.url + "getByIdUser/" + idUser).map(res => res.json());
+		//if(idUser != undefined && idUser != null)
+			return this._http.get(this.url + "getByIdUser/" + idUser).map(res => res.json());
 	}
 
 }
