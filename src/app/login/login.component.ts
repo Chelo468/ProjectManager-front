@@ -57,7 +57,7 @@ export class LoginComponent{
 		{
 			if(this.usuario.id_usuario > 0)
 			{
-				this._authService.setToken(this.usuario.tokenSession);
+				this._authService.setIdUserToken(this.usuario.id_usuario,this.usuario.tokenSession);
 				this._router.navigate(['/proyecto/' + this.usuario.id_usuario]);
 			}
 			else

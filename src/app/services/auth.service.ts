@@ -12,12 +12,17 @@ export class AuthService {
     private _router:Router    
     ){}
 
-  setToken(token){
+  setIdUserToken(idUser,token){
     localStorage.setItem("tokenSession",token);
+    localStorage.setItem("idUser",idUser);
   }
 
   getToken(){
    return localStorage.getItem("tokenSession");
+  }
+
+  getIdUser(){
+    return localStorage.getItem("idUser");
   }
 
   isAuthenticated(){
@@ -34,6 +39,7 @@ export class AuthService {
 
   cerrarSesion(){
     localStorage.removeItem("tokenSession");
+    localStorage.removeItem("idUser");
     this._router.navigate(['/']);
   }
         
