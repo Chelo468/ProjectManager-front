@@ -1,24 +1,25 @@
-<div class="form">
-	<div class="row">
+<form  (ngSubmit)="iniciarSesion()" novalidate="">
+	<div class="form-group row">
 		<div class="col-md-12">
 			Project Manager
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="form-group row">
 		<div class="col-md-12">
-			Usuario <input class="form-control col-4" type="text" [(ngModel)]="login_name" required >
+			Usuario <input class="form-control col-4" name="login_name" type="text" [(ngModel)]="login_name" required >
 		</div>
 	</div>
-	<div class="row">
+	<div class="form-group row">
 		<div class="col-md-12">
-			Contraseña <input class="form-control col-4" type="password" [(ngModel)]="password" required >
+			Contraseña <input class="form-control col-4" name="password" type="password" [(ngModel)]="password" required >
 		</div>
 	</div>
-	<div class="row">
+
+	<div class="form-group row">
 		<div class="col-md-12">
-			<button class="btn btn-success" type="submit" (click)="iniciarSesion()">Iniciar Sesión</button>	
-			<button class="btn btn-success" (click)="iniciarSesion()">Registrarse</button>	
+			<button class="btn btn-success" type="submit">Iniciar Sesión</button>	
+			<button class="btn btn-success" (click)="signUp()">Registrarse</button>	
 		</div>
 	</div>
 
@@ -27,5 +28,5 @@
 			Usuario y/o contraseña incorrectos.
 		</div>
 	</div>
-</div>
+</form>
 <!--<input type="text" [(ngModel)]="usuario.id_usuario">-->
