@@ -1,36 +1,38 @@
-<form novalidate="" (ngSubmit)="crear()" [formGroup]="proyecto">
+<form novalidate="" (ngSubmit)="crear(proyecto)" #proyecto="ngForm">
 	<div class="form-group row">
-		<div class="col-md-12" [ngClass]="{'has-danger': !proyecto.get('nombre').valid }">
+		<div class="col-md-12">
 			<label class="col-2 col-form-label">Nombre </label>
 					<input class="form-control col-4" 
 					placeholder="nombre"
-					type="text" formControlName="nombre" required maxlength="50" >
-					<div class="form-control-feedback" *ngIf="proyecto.controls['nombre'].errors?.required">Ingrese un nombre.</div>
+					type="text" name="nombre" [(ngModel)]="proyecto.nombre" required maxlength="50" >
+					<!--<div class="form-control-feedback" *ngIf="proyecto.controls['nombre'].errors?.required">Ingrese un nombre.</div>-->
 		</div>
 	</div>
 	<div class="form-group row">
 		<div class="col-md-12">
 			<label class="col-2 col-form-label">Descripción </label>
-					<input class="form-control col-4" 
-					type="password" formControlName="descripcion" placeholder="descripcion" required maxlength="200" >
+					<textarea class="form-control col-4" 
+					type="text" name="descripcion" [(ngModel)]="proyecto.descripcion" placeholder="descripcion" required maxlength="200" ></textarea> 
 		</div>
 	</div>
 	<div class="form-group row">
 		<div class="col-md-12">
 			<label class="col-2 col-form-label">URL de Testing </label>
-			<input class="form-control col-4" placeholder="Url Testing" type="text" formControlName="urlTesting" maxlength="100" >
+			<input class="form-control col-4" placeholder="Url Testing" type="text" name="urlTesting" [(ngModel)]="proyecto.urlTesting" maxlength="100" >
 		</div>
 	</div>
 	<div class="form-group row">
 		<div class="col-md-12">
 			<label class="col-2 col-form-label">URL de Producción  </label>
-			<input class="form-control col-4" placeholder="Url Produccion" type="password" formControlName="urlProduccion" maxlength="100" >
+			<input class="form-control col-4" placeholder="Url Produccion" type="text" name="urlProduccion" [(ngModel)]="proyecto.urlProduccion" maxlength="100" >
 		</div>
 	</div>
 	<div class="form-group row">
 		<div class="col-md-12">
-			<button type="submit" class="btn btn-outline-primary">Crear</button>
+			<button type="submit" class="btn btn-outline-primary" [disabled]="!proyecto.valid">Crear</button>
 			<button (click)="volver()" class="btn btn-default">Volver</button>
 		</div>
 	</div>
 </form>
+
+{{proyecto.nombre}}

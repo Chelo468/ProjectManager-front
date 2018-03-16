@@ -36,14 +36,24 @@ export class ProyectoComponent{
 	}
 
 	buscarProyectosPorIdUser(idUser){
-			
-			return this._proyectoService.getByIdUser(idUser).subscribe(
+			console.log(this._authService.getToken());
+			return this._proyectoService.getByIdUser(idUser, this._authService.getToken()).subscribe(
 				result => {
 					this.proyectos = result;
 					//console.log(this.proyectos);
 
 					if(this.proyectos.Error)
-						this.proyectos = [];
+					{
+						alert(this.proyectos.Mensaje);
+						this._router.navigate(['/']);
+					}
+					else
+					{
+						if(this.proyectos.Mensaje)
+						{
+							this.proyectos = [];
+						}
+					}
 					//this.usuario = JSON.parse(result);
 					},
 				error => {

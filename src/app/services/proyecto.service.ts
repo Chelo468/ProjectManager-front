@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 
 import { Comun } from '../comun/comun';
+import { Proyecto } from '../clases/proyecto';
 
 @Injectable()
 
@@ -21,11 +22,28 @@ export class ProyectoService{
 		this.url = _comun.url + "proyecto/";
 	}
 
-	getByIdUser(idUser){
+	getByIdUser(idUser, token){
 		//Ejemplo Spotify
 		//let _headers = new Headers({'authorization': 'Bearer token'});
 		//if(idUser != undefined && idUser != null)
-			return this._http.get(this.url + "getByIdUser/" + idUser).map(res => res.json());
+			return this._http.get(this.url + "getByIdUser/" + idUser + "/" + token).map(res => res.json());
+	}
+
+	nuevoProyecto(proyecto:Proyecto){
+
+		
+		let body = JSON.stringify(proyecto);
+		let headers = new Headers({
+			'Content-type': 'application/json',
+			'access-control-allow-headers': '*',
+			'nombre': proyecto.nombre,
+			'descripcion': proyecto.descripcion,
+			'urlTesting': proyecto.urlTesting,
+			'urlProduccion': proyecto.urlProduccion
+			});
+
+		return this._http.post(this.url + "crear", body, {headers}).map(res => res.json());
+
 	}
 
 }
