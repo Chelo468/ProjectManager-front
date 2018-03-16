@@ -6,20 +6,23 @@ import { Routes,RouterModule } from '@angular/router';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
+import { ProyectoDetalleComponent } from './proyecto/proyecto-detalle.component';
 import { ProyectoNuevoComponent } from './proyecto/proyecto-nuevo.component';
 import { PROYECTO_ROUTES } from './proyecto/proyecto.routing'
 
 
 const appRoutes: Routes = [
 
-    {path: '', component: LoginComponent},
+    {path: '', component: ProyectoComponent},
     {path: 'usuario', component: UsuarioComponent},
-    {path: 'home', component: LoginComponent},
+    {path: 'home', component: ProyectoComponent},
+    {path: 'login', component: LoginComponent},
     {path: 'proyecto/nuevo', component: ProyectoNuevoComponent},
-    {path: 'proyecto/:idUser', component: ProyectoComponent, children: PROYECTO_ROUTES},
+    {path: 'proyecto', component: ProyectoComponent},
+    {path: 'proyecto/:id', component: ProyectoDetalleComponent},
     //{path: 'proyecto/:idUser', component: ProyectoComponent},
     {path: 'usuario/:idUser', component: UsuarioComponent},
-    {path: '**', component: LoginComponent},
+    {path: '**', component: ProyectoComponent},
 
 ]
 

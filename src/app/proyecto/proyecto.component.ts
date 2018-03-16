@@ -29,15 +29,18 @@ export class ProyectoComponent{
 	}
 
 	ngOnInit(){
-		this._route.params.forEach((params:Params) => {
-				this.idUser = params['idUser'];
-				this.buscarProyectosPorIdUser(this.idUser);
-			});	
+		if(!this._authService.isAuthenticated())
+			this._router.navigate(['/login'])
+		//this._route.params.forEach((params:Params) => {
+				//this.idUser = params['idUser'];
+				//if(this.idUser > 0)
+		this.buscarProyectosPorIdUser();
+			//});	
 	}
 
-	buscarProyectosPorIdUser(idUser){
-			console.log(this._authService.getToken());
-			return this._proyectoService.getByIdUser(idUser, this._authService.getToken()).subscribe(
+	buscarProyectosPorIdUser(){
+			//console.log(this._authService.getToken());
+			return this._proyectoService.getByUserId(this._authService.getToken()).subscribe(
 				result => {
 					this.proyectos = result;
 					//console.log(this.proyectos);

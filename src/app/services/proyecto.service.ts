@@ -22,28 +22,57 @@ export class ProyectoService{
 		this.url = _comun.url + "proyecto/";
 	}
 
-	getByIdUser(idUser, token){
+	getById(id, token){
+		let body = {id: id};
+		let headers = this.createRequestHeader(body,token);
+		return this._http.get(this.url + "getById/" + id,  { headers }).map(res => res.json());
+	}
+
+	getByUserId(token){
 		//Ejemplo Spotify
 		//let _headers = new Headers({'authorization': 'Bearer token'});
 		//if(idUser != undefined && idUser != null)
-			return this._http.get(this.url + "getByIdUser/" + idUser + "/" + token).map(res => res.json());
+			return this._http.get(this.url + "getByIdUser/" + token).map(res => res.json());
 	}
 
-	nuevoProyecto(proyecto:Proyecto){
+	nuevoProyecto(proyecto:Proyecto, token:string){
 
-		
+		//console.log(token);
 		let body = JSON.stringify(proyecto);
-		let headers = new Headers({
-			'Content-type': 'application/json',
-			'access-control-allow-headers': '*',
-			'nombre': proyecto.nombre,
-			'descripcion': proyecto.descripcion,
-			'urlTesting': proyecto.urlTesting,
-			'urlProduccion': proyecto.urlProduccion
-			});
+		//console.log(body);
+		let headers = this.createRequestHeader(body,token);
 
-		return this._http.post(this.url + "crear", body, {headers}).map(res => res.json());
+		/*'access-control-allow-headers': '*',
+			*/
+
+		return this._http.post(this.url + "crear/", body, {headers:headers}).map(res => res.json());
 
 	}
+
+	actualizarProyecto(proyecto:Proyecto, token:string, id){
+
+		//console.log(token);
+		let body = JSON.stringify(proyecto);
+		//console.log(body);
+		let headers = this.createRequestHeader(body,token);
+
+		/*'access-control-allow-headers': '*',
+			*/
+
+		return this._http.post(this.url + "actualizar/" + id, body, {headers:headers}).map(res => res.json());
+
+	}
+
+	 private createRequestHeader(body,token) {
+
+		 let headers = new Headers();
+		 //let _token = token;
+		 if (token != "") {
+		 headers.set("X-AUTH-TOKEN", token);
+		 }
+		 //headers.set("Accept", body);
+		 headers.set("Content-Type", "application/json");
+		 return headers;
+	 }
 
 }

@@ -21,7 +21,7 @@ import { AuthService } from '../services/auth.service';
 export class ProyectoNuevoComponent{
 
 	public proyecto:Proyecto = {
-		nombre: "asd",
+		nombre: "",
 		descripcion: "",
 		urlTesting: "",
 		urlProduccion: ""
@@ -44,20 +44,34 @@ export class ProyectoNuevoComponent{
 		this.idUser = this._authService.getIdUser();
 	}
 
-	crear(){
-		console.log(this.proyecto);
-		/*this._proyectoService.nuevoProyecto(this.proyecto).subscribe(
+	crear(proyecto:NgForm){
+		/*this.proyecto.nombre = proyecto.nombre;
+		this.proyecto.descripcion = proyecto.descripcion;
+		this.proyecto.urlTesting = proyecto.urlTesting;
+		this.proyecto.urlProduccion = proyecto.urlProduccion;*/
 
-			result => console.log(result),
+		//console.log(proyecto.value);
+
+		//console.log("this", this.proyecto);
+		//console.log("Proyecto", proyecto);
+		this._proyectoService.nuevoProyecto(proyecto.value, this._authService.getToken()).subscribe(
+
+			result => {
+				if(result.Error)
+					alert(result.Mensaje);
+				else
+					if(result.id_proyecto > 0)
+						this._router.navigate(['/']);
+				},
 			error => console.log(error)
 
-			);*/
+			);
 		//console.log("Proyecto", this.proyecto);
 
 	}
 
 	volver(){
-		this._router.navigate(['/proyecto/' + this.idUser]);
+		this._router.navigate(['/proyecto']);
 	}
 
 

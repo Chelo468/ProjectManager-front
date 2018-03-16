@@ -12,7 +12,7 @@
 		<div class="col-md-12">
 			<label class="col-2 col-form-label">Descripción </label>
 					<textarea class="form-control col-4" 
-					type="text" name="descripcion" [(ngModel)]="proyecto.descripcion" placeholder="descripcion" required maxlength="200" ></textarea> 
+					type="text" name="descripcion" [(ngModel)]="proyecto.descripcion" placeholder="descripcion" required maxlength="500" ></textarea> 
 		</div>
 	</div>
 	<div class="form-group row">
@@ -29,10 +29,9 @@
 	</div>
 	<div class="form-group row">
 		<div class="col-md-12">
-			<button type="submit" class="btn btn-outline-primary" [disabled]="!proyecto.valid">Crear</button>
+		
 			<button (click)="volver()" class="btn btn-default">Volver</button>
+				<button type="submit" class="btn btn-outline-primary" [disabled]="!proyecto.valid">Crear</button>
 		</div>
 	</div>
 </form>
-
-{{proyecto.nombre}}

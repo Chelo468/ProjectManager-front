@@ -12,7 +12,6 @@ import { LoginComponent } from './login/login.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { ProyectoNuevoComponent } from './proyecto/proyecto-nuevo.component';
 import { ProyectoDetalleComponent } from './proyecto/proyecto-detalle.component';
-import { ProyectoEditarComponent } from './proyecto/proyecto-editar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 
@@ -25,8 +24,7 @@ import { Comun } from './comun/comun';
     LoginComponent,
     ProyectoComponent,
     ProyectoNuevoComponent,
-    ProyectoDetalleComponent,
-    ProyectoEditarComponent,
+    ProyectoDetalleComponent,    
     NavbarComponent
   ],
   imports: [

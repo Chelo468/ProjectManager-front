@@ -1,15 +1,31 @@
-<div>
+<h3>
 	Proyectos
-</div>
+</h3>
 <div *ngIf="proyectos.length > 0">
-<ul>
-	<li *ngFor="let proyecto of proyectos">
-		<div class="btn-group" role="group" aria-label="Basic example">
-		  <button type="button" class="btn btn-secondary">Editar</button>
-		  <button type="button" class="btn btn-secondary">Detalle</button>
-		</div>
-	</li>
-</ul>
+<table class="table table-hovered">
+	<thead class="thead-dark">
+    <tr>
+      <th scope="col">Proyectos</th>
+      <th scope="col">Acciones</th>
+     
+    </tr>
+  </thead>
+	<tr *ngFor="let proyecto of proyectos">
+		<td>
+
+			{{proyecto.nombre}}
+		</td>
+		<td>
+			<div class="btn-group" role="group" aria-label="Basic example">
+			  	<button type="button" class="btn btn-secondary" [routerLink]="['/proyecto/'+proyecto.id_proyecto+'']" >Detalle</button>
+		  	</div>
+		</td>
+	</tr>
+		
+		  
+		
+	
+</table>
 </div>
 <div *ngIf="proyectos.length == 0" class="alert alert-info">
 	No tiene proyectos asignados ni creados...
@@ -17,5 +33,3 @@
 <div>
 	<button class="btn btn-success" (click)="crearProyecto()">Crear Proyecto</button>
 </div>
-
-<router-outlet></router-outlet>

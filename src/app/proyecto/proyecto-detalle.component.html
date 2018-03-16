@@ -1,3 +1,43 @@
-<div>
-	Proyecto Detalle
-</div>
+<form novalidate="" (ngSubmit)="actualizar(proyectoNuevo)" #proyectoNuevo="ngForm">
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">Nombre </label>
+					<input class="form-control col-4" 
+					placeholder="nombre"
+					type="text" name="nombre" [(ngModel)]="proyecto.nombre" required maxlength="50" >
+					<!--<div class="form-control-feedback" *ngIf="proyecto.controls['nombre'].errors?.required">Ingrese un nombre.</div>-->
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">Descripción </label>
+					<textarea class="form-control col-4" 
+					type="text" name="descripcion" [(ngModel)]="proyecto.descripcion" placeholder="descripcion" required maxlength="500" ></textarea> 
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">URL de Testing  </label>
+			<a href="{{proyecto.urlTesting}}" *ngIf="!editarTesting">{{proyecto.urlTesting}}</a>
+			<input class="form-control col-4" *ngIf="editarTesting" placeholder="Url Produccion" type="text" name="urlTesting" [(ngModel)]="proyecto.urlTesting" maxlength="100" >
+			<button *ngIf="!editarTesting" class="btn btn-info" (click)="editarTesting=true">Editar</button>
+			<button *ngIf="editarTesting" class="btn btn-info" (click)="editarTesting=false">Guardar</button>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			<label class="col-2 col-form-label">URL de Producción  </label>
+			<a href="{{proyecto.urlProduccion}}" *ngIf="!editarProduccion">{{proyecto.urlProduccion}}</a>
+			<input class="form-control col-4" *ngIf="editarProduccion" placeholder="Url Produccion" type="text" name="urlProduccion" [(ngModel)]="proyecto.urlProduccion" maxlength="100" >
+			<button *ngIf="!editarProduccion" class="btn btn-info" (click)="editarProduccion=true">Editar</button>
+			<button *ngIf="editarProduccion" class="btn btn-info" (click)="editarProduccion=false">Guardar</button>
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			
+			<button [routerLink]="['/proyecto']" class="btn btn-default">Volver</button>
+			<button type="submit" class="btn btn-outline-primary" [disabled]="proyectoNuevo.pristine">Actualizar</button>
+		</div>
+	</div>
+</form>
