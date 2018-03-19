@@ -1,0 +1,51 @@
+<form (ngSubmit)="crear(registro)" #registro="ngForm">
+	<div class="form-group row">
+		<div class="col-md-12">
+			<h1>Registro</h1>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-md-12">
+			Usuario <input class="form-control col-4" name="login_name" type="text" [(ngModel)]="registro.login_name" required >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			Email <input class="form-control col-4" name="email" type="email" [(ngModel)]="registro.email" required >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			Confirmar Contraseña <input class="form-control col-4" name="password" type="password" [(ngModel)]="registro.password" required >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			Confirmar Contraseña <input class="form-control col-4" name="passwordConfirm" type="password" [(ngModel)]="registro.passwordConfirm" required >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			Nombre <input class="form-control col-4" name="nombre" type="email" [(ngModel)]="registro.nombre" required >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			Apellido <input class="form-control col-4" name="apellido" type="email" [(ngModel)]="registro.apellido" required >
+		</div>
+	</div>
+	<div class="form-group row">
+		<div class="col-md-12">
+			Telefono <input class="form-control col-4" name="telefono" type="email" [(ngModel)]="registro.telefono" required >
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-md-12">
+			<button class="btn btn-success">Volver</button>	
+			<button class="btn btn-success" type="submit">Crear</button>	
+		</div>
+	</div>
+
+</form>

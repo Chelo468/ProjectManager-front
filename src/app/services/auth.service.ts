@@ -5,11 +5,12 @@ import { Injectable } from '@angular/core';
 //Importamos el router para aceptar parametros
 import { Router, ActivatedRoute, Params} from '@angular/router';
 
+
 @Injectable()
 export class AuthService {
 
   constructor(
-    private _router:Router    
+    private _router:Router
     ){}
 
   setIdUserToken(idUser,token){
@@ -38,9 +39,11 @@ export class AuthService {
   }
 
   cerrarSesion(){
+    
     localStorage.removeItem("tokenSession");
     localStorage.removeItem("idUser");
-    this._router.navigate(['/']);
+
+    this._router.navigate(['/login']);
   }
         
 

@@ -1,5 +1,5 @@
-<div *ngIf="_authService.isAuthenticated()">
-	<button class="btn btn-danger" (click)="_authService.cerrarSesion()">Cerrar Sesión</button>
+<div *ngIf="autenticado">
+	<button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
 </div>
 <div class="container">
 <router-outlet></router-outlet>

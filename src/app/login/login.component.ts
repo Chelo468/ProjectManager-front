@@ -60,7 +60,7 @@ export class LoginComponent{
 				if(this.usuario.tokenSession != "")
 				{
 					this._authService.setIdUserToken(this.usuario.id_usuario,this.usuario.tokenSession);
-					this._router.navigate(['/proyecto/' + this.usuario.id_usuario]);
+					this._router.navigate(['/proyecto']);
 				}
 				else
 				{
@@ -76,7 +76,7 @@ export class LoginComponent{
 	}
 
 	signUp(){
-		alert('TODO');
+		this._router.navigate(['/registro'])
 	}
 
 }

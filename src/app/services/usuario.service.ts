@@ -36,41 +36,42 @@ export class UsuarioService{
 
 	logIn(login_name, password){
 
-		/*var params = {'login_name': 'mbrizuela', 'password': '123456'};
-		let headers = new Headers();
-		headers.append('nombre', 'mbrizuela');
-		headers.append('apellido', '123456');
-		headers.append('Access-Control-Allow-Headers', 'Content-Type, Accept, X-Requested-With');
-		headers.append('Access-Control-Allow-Origin', '*');
-		//let params = new URLSearchParams();
-		headers.append('Content-Type', 'application/json');
-        //headers.append('login_name', 'mbrizuela');
-        //headers.append('password', '123456');
-		/*
-		let headers = new Headers({ 'Content-Type': 'application/json'});
-	    let options = new RequestOptions({ headers: headers });
-	    let body = JSON.stringify(params);
-		
-		
-	    return this._http({
-				  method: 'GET',
-				  url: this.url + "login/",
-				  data: params
-				}).then(function successCallback(response) {
-							this.successLogIn(response);
-				    // this callback will be called asynchronously
-				    // when the response is available
-				  }, function errorCallback(response) {
-				    // called asynchronously if an error occurs
-				    // or server returns response with an error status.
-				  });*///, params: {'json': 'asd'}
-
 		return this._http.get(this.url + "login/" + login_name+"/" + password ).map(res => res.json());
+	}
+
+	cerrarSesion(token){
+
+		let body = {token: token}
+
+		let headers = this.createRequestHeader(body, token);
+
+
+		return this._http.post(this.url + "logout", body, {headers}).map(res => res.json());
 	}
 
 	getArticulos(){
 		return this._http.get(this.url).map(res => res.json());
 	}
+
+	registrar(registro){
+
+		let body = JSON.stringify(registro);
+		//let headers = this.createRequestHeader(body,token);
+
+		return this._http.post(this.url + "crear", body).map(res => res.json());
+	}
+
+	private createRequestHeader(body,token) {
+
+		 let headers = new Headers();
+		 //let _token = token;
+		 if (token != "") {
+		 headers.set("X-AUTH-TOKEN", token);
+		 }
+		 //headers.set("Accept", body);
+		 headers.set("Content-Type", "application/json");
+		 return headers;
+	 }
 
 
 

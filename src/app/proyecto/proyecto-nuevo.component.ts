@@ -45,23 +45,23 @@ export class ProyectoNuevoComponent{
 	}
 
 	crear(proyecto:NgForm){
-		/*this.proyecto.nombre = proyecto.nombre;
-		this.proyecto.descripcion = proyecto.descripcion;
-		this.proyecto.urlTesting = proyecto.urlTesting;
-		this.proyecto.urlProduccion = proyecto.urlProduccion;*/
-
-		//console.log(proyecto.value);
-
-		//console.log("this", this.proyecto);
-		//console.log("Proyecto", proyecto);
+		
 		this._proyectoService.nuevoProyecto(proyecto.value, this._authService.getToken()).subscribe(
 
 			result => {
 				if(result.Error)
+				{
 					alert(result.Mensaje);
+					this._router.navigate(['/']);
+				}
 				else
 					if(result.id_proyecto > 0)
 						this._router.navigate(['/']);
+					else
+					{
+						alert('Ocurrió un error al crear el proyecto');
+
+					}
 				},
 			error => console.log(error)
 

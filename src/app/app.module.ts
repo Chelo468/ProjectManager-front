@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 //Importacion de componentes
 import { UsuarioComponent } from './usuario/usuario.component';
 import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 import { ProyectoComponent } from './proyecto/proyecto.component';
 import { ProyectoNuevoComponent } from './proyecto/proyecto-nuevo.component';
 import { ProyectoDetalleComponent } from './proyecto/proyecto-detalle.component';
@@ -22,6 +23,7 @@ import { Comun } from './comun/comun';
     AppComponent,
     UsuarioComponent,
     LoginComponent,
+    RegistroComponent,
     ProyectoComponent,
     ProyectoNuevoComponent,
     ProyectoDetalleComponent,    
